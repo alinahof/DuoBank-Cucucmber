@@ -8,3 +8,4 @@ Feature: As a user I want to fill out personal information section of the applic
     @personal
     Scenario: I fill out the personal information section of application
       Given I fill out personal information section
+

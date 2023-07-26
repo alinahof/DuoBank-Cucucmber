@@ -9,6 +9,6 @@ public class PersonalInfoStepDefs {
 
     @Given("I fill out personal information section")
     public void i_fill_out_personal_information_section() {
-      new PersonalPage().validInfoFillout();
+        new PersonalPage().validInfoFillout();
     }
 }
