@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utils.Driver;
+import Utils.Driver;
 
 @Data
 public class BorrowerEmploymentPage {
@@ -104,5 +104,25 @@ public class BorrowerEmploymentPage {
     public WebElement getIncomeSource3(String value) {
         String xpath = "//select[@id='incomesource3']//option[@value='" + value + "']";
         return Driver.getDriver().findElement(By.xpath(xpath));
+    }
+    public void borrowPageInfo(){
+
+        getEmployerName().sendKeys(faker.name().firstName());
+        getPosition().sendKeys(faker.job().position());
+        getCity().sendKeys(faker.address().city());
+        getState("AK").click();
+        getStartDate().sendKeys(faker.date().toString());
+        getGrossMonthlyIncome().sendKeys(String.valueOf(faker.random().nextInt(901) + 100));
+        getMonthlyOvertime().sendKeys(String.valueOf(faker.random().nextInt(901) + 100));
+        getMonthlyBonuses().sendKeys(String.valueOf(faker.random().nextInt(901)+100));
+        getMonthlyComissions().sendKeys(String.valueOf(faker.random().nextInt(901)+100));
+        getMonthlyDividents().sendKeys(String.valueOf(faker.random().nextInt(901)+100));
+        getIncomeSource("Alimony/Child Support").click();
+        getAmount().sendKeys(String.valueOf(faker.random().nextInt(901)+100));
+        getIncomeSource2("Unemployment Benefits").click();
+        getAmount2().sendKeys(String.valueOf(faker.random().nextInt(901)+100));
+        getIncomeSource3("Royalty Payments").click();
+        getAmount3().sendKeys(String.valueOf(faker.random().nextInt(901)+100));
+        getNextButton().click();
     }
 }
