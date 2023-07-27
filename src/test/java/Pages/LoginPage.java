@@ -5,8 +5,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import Utils.Driver;
-import Utils.ConfigReader;
+import utils.Driver;
+import utils.ConfigReader;
 
 @Data
 public class LoginPage {

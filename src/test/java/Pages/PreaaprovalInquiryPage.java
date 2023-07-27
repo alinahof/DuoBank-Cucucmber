@@ -4,7 +4,8 @@ import lombok.Data;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import Utils.Driver;
+import org.openqa.selenium.support.ui.Select;
+import utils.Driver;
 
 @Data
 public class PreaaprovalInquiryPage {
@@ -17,10 +18,15 @@ public class PreaaprovalInquiryPage {
     private WebElement orderReport;
 
     @FindBy(xpath = "//label[@for='creditreport2']")
+
     private WebElement noReport;
 
     @FindBy(xpath = " //a[@href='#finish']")
     private WebElement saveButton;
+
+    @FindBy(xpath = " //a[@href='#next']")
+    private WebElement nextButton;
+
 
     public void fillOutApplication(String firstName,
                                    String lastName,
@@ -52,7 +58,7 @@ public class PreaaprovalInquiryPage {
         personalInformationPage.getHomephoneBorrower().sendKeys(homePhone);
         personalInformationPage.getNextButton().click();
 
-        ExpensesPage expensesPage = new ExpensesPage();
+        ExpensePage expensesPage = new ExpensePage();
         expensesPage.getRentalpayment().sendKeys("1000");
         expensesPage.getNextButton().click();
 
