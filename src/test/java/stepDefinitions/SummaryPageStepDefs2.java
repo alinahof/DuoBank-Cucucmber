@@ -70,8 +70,10 @@ public class SummaryPageStepDefs2 {
     }
     @Then("I'm able to submit the application")
     public void i_m_able_to_submit_the_application() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        SummaryPage2 sum= new SummaryPage2();
+        //submit or save changes
+        sum.getSummarySection().click();
+        sum.getSaveButton().click();
     }
 
 }
