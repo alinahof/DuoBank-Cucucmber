@@ -16,3 +16,24 @@ Feature: Summary page review & edit
   Scenario: Review Edit PreApproval Inquiry
     Given I click on the Preapproval
     Then I save loan application
+
+    Scenario: Review Personal Edit button
+      Given I click on the personal
+      Then I save loan application
+
+
+  Scenario: Review Expense Edit button
+    Given I click on the expense
+    Then I save loan application
+
+  Scenario: Review Employment and Income Edit button
+    Given I click on the Employment and Income
+    Then I save loan application
+
+  Scenario: Review Credit Report Edit button
+    Given I click on the Credit Report
+    Then I save loan application
+
+  Scenario: Review eConsent Edit button
+    Given I click on the eConsent
+    Then I save loan application
