@@ -48,4 +48,16 @@ public class EconsentPage {
 
         getNextButton().click();
     }
+    @FindBy(id = "eConsentdeclarerFirstName-error")
+    private WebElement errorFirstName;
+
+    @FindBy(id = "eConsentdeclarerLastName-error")
+    private WebElement errorLasttName;
+
+    @FindBy(id = "eConsentdeclarerEmail-error")
+    private WebElement errorEmail;
+
+    @FindBy(id = "consentagree-error")
+    private WebElement errorRadioButton;
+
 }
