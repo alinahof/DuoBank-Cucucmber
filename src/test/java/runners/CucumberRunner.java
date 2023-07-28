@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         },
         publish = true //generates a cloud based report
 //          ,stepNotifications = true // displays detailed step results
-      //  ,dryRun = true // to generate step definitions quickly without running the code
+//        ,dryRun = true // to generate step definitions quickly without running the code
 
 )
 
