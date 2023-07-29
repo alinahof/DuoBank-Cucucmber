@@ -1,13 +1,12 @@
 package stepDefinitions;
 
 import Pages.EconsentPage;
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import utils.Driver;
 
 import java.util.List;
@@ -124,5 +123,6 @@ public class eConsentStepDefs {
         econsentPage.getNextButton().click();
         Assert.assertTrue(econsentPage.getErrorRadioButton().isDisplayed());
     }
+
 
 }
