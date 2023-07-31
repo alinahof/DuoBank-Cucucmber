@@ -44,6 +44,10 @@ public class LoginPage {
         emailAddress.sendKeys(ConfigReader.getProperty("valid"), Keys.TAB, ConfigReader.getProperty("passcode"), Keys.ENTER);
     }
 
+    public void adminLogin() {
+        emailAddress.sendKeys(ConfigReader.getProperty("admin"), Keys.TAB, ConfigReader.getProperty("code"), Keys.ENTER);
+    }
+
     public void validLoginInfo() throws InterruptedException {
         getEmailAddress().sendKeys("rschwand0@soundcloud.com");
         getPassword().sendKeys("aD2Z_oq+k'2b");
