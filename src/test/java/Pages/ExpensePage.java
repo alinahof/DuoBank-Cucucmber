@@ -2,12 +2,13 @@ package Pages;
 
 import com.github.javafaker.Faker;
 import lombok.Data;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Driver;
 
-@Data
+@Getter
 public class ExpensePage {
     public ExpensePage(){
 
