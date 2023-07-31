@@ -3,12 +3,12 @@ Feature: eConsent Page
   Background: I'm on eConsent page
     Given I choose credit report option
 
-  @econsent
+  @econsent @smoke
     Scenario: Verify first name, last name, email fields are required
       When I Leave the first name, last name, email fields field empty
       Then I should see a warning message
 
-  @econsent
+  @econsent @smoke
       Scenario Outline: Verify email format
         When I enter invalid "<email>"  format
         Then I should see a email warning message
@@ -38,12 +38,12 @@ Feature: eConsent Page
         When I'm on the Econsent page
         Then Agree should be selected
 
-  @econsent
+  @econsent @smoke
   Scenario: Verify "Agree" functionality
     When I select agree and Next
     Then I should be redirected to the next page
 
-  @econsent
+  @econsent @smoke
   Scenario: Verify " Don't Agree" functionality
     When I select don't agree and Next
     Then I should be redirected to the main application page
