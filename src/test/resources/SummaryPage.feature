@@ -1,4 +1,4 @@
-Feature: Summary Page
+Feature: Summary Paget
 
   @summary
   Scenario: I'm on the summary page

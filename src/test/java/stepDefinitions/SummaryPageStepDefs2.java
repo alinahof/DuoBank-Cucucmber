@@ -4,7 +4,6 @@ import Pages.*;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import utils.Driver;
 
@@ -53,8 +52,10 @@ public class SummaryPageStepDefs2 {
 
         //eConsent edit page
         sum.getSummarySection().click();
-        sum.getEConsentEditButton().click();
         econsentPage.getFirstName().sendKeys(faker.name().firstName());
+        econsentPage.getLastName().sendKeys(faker.name().lastName());
+        econsentPage.getEmail().sendKeys(faker.internet().emailAddress());
+        sum.getEConsentEditButton().click();
 
         //save changes
         sum.getSummarySection().click();
