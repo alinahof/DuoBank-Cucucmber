@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 import utils.Driver;
 
@@ -65,7 +66,7 @@ public class SummaryPageStepDefs2 {
     @Then("I make necessary changes in PreApproval")
     public void i_make_necessary_changes_in_pre_approval() {
         PreApprovalPage pre = new PreApprovalPage();
-        pre.getDownpayment().sendKeys("543210");
+        pre.getDownpayment().sendKeys(Keys.BACK_SPACE,Keys.BACK_SPACE,Keys.BACK_SPACE,"543210");
     }
 
     //=============
@@ -79,7 +80,7 @@ public class SummaryPageStepDefs2 {
     @Then("I make necessary changes in Personal Details")
     public void i_make_necessary_changes_in_personal_details() {
         PersonalInformationPage pi= new PersonalInformationPage();
-        pi.getCellphoneBorrower().sendKeys("0987654321");
+        pi.getCellphoneBorrower().sendKeys(Keys.BACK_SPACE,Keys.BACK_SPACE,Keys.BACK_SPACE,"0987654321");
     }
 
     //=============
@@ -93,8 +94,7 @@ public class SummaryPageStepDefs2 {
     @Then("I make necessary changes in Expenses")
     public void i_make_necessary_changes_in_expenses() {
         ExpensePage exp= new ExpensePage();
-        exp.getMonthlypaymentlabel().clear();
-        exp.getMonthlypaymentlabel().sendKeys("654321");
+        exp.getMonthlypaymentlabel().sendKeys(Keys.BACK_SPACE,Keys.BACK_SPACE,Keys.BACK_SPACE,"654321");
     }
 
     //=============
@@ -109,8 +109,7 @@ public class SummaryPageStepDefs2 {
     public void i_make_necessary_changes_in_employment_income() {
         EmploymentandIncomePage empInc= new EmploymentandIncomePage();
         Faker faker= new Faker();
-        empInc.getEmployerName().clear();
-        empInc.getEmployerName().sendKeys(faker.name().fullName());
+        empInc.getEmployerName().sendKeys(Keys.BACK_SPACE,Keys.BACK_SPACE,Keys.BACK_SPACE,faker.name().fullName());
     }
 
     //=============
@@ -123,8 +122,7 @@ public class SummaryPageStepDefs2 {
 
     @Then("I make necessary changes in Order Credit")
     public void i_make_necessary_changes_in_order_credit() {
-        summaryPage2.getCreditNoButton().clear();
-                summaryPage2.getCreditNoButton().click();
+        summaryPage2.getCreditNoButton().click();
     }
 
     //=============
@@ -139,8 +137,7 @@ public class SummaryPageStepDefs2 {
     public void i_make_necessary_changes_in_e_consent() {
         EconsentPage econsentPage= new EconsentPage();
         Faker faker= new Faker();
-        econsentPage.getFirstName().clear();
-        econsentPage.getFirstName().sendKeys(faker.name().firstName());
+        econsentPage.getFirstName().sendKeys(Keys.BACK_SPACE,Keys.BACK_SPACE,Keys.BACK_SPACE,faker.name().firstName());
     }
 
     @Then("I am able to submit the application")
