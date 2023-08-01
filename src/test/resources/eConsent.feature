@@ -8,7 +8,7 @@ Feature: eConsent Page
       When I Leave the first name, last name, email fields field empty
       Then I should see a warning message
 #
-  @econsent
+  @econsent @smoke
       Scenario Outline: Verify email format
         When I enter invalid "<email>"  format
         Then I should see a email warning message
@@ -32,12 +32,12 @@ Feature: eConsent Page
   Scenario: Verify there are 2 radio buttons "Agree" and "Don't Agree"
       When I Leave the first name, last name, email fields field empty
       Then I should see two radio buttons Agree and Don't Agree
-#
+
   @econsent
   Scenario: Verify that "Agree" is selected by default
         When I'm on the Econsent page
         Then Agree should be selected
-#
+
   @econsent @smoke
   Scenario: Verify "Agree" functionality
     When I select agree and Next
