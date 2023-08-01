@@ -7,7 +7,7 @@ Feature: eConsent Page
     Scenario: Verify first name, last name, email fields are required
       When I Leave the first name, last name, email fields field empty
       Then I should see a warning message
-#
+
   @econsent @smoke
       Scenario Outline: Verify email format
         When I enter invalid "<email>"  format
