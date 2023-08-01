@@ -21,19 +21,19 @@ public class SummaryPage2 {
     @FindBy (xpath = "//div[@class='PreApprovalDetails']//a[@href='javascript:void(0)']")
     private WebElement preApprovalEditButton;
 
-    @FindBy (xpath = "//a[@id='PersonalnformationEdit']")
+    @FindBy (xpath = "//div[@class='Personalnformation']//a[@id='PersonalnformationEdit']")
     private WebElement personalDetailsEditButton;
 
-    @FindBy (xpath = "//a[@id='ExpenseEdit']")
+    @FindBy (xpath = "//div[@class='Expenses']//a[@id='ExpenseEdit']")
     private WebElement expensesEditButton;
 
-    @FindBy (xpath = "//a[@id='EmploymentIncomeEdit']")
+    @FindBy (xpath = "//div[@class='EmploymentIncome']//a[@id='EmploymentIncomeEdit']")
     private WebElement employmentAndIncomeEditButton;
 
-    @FindBy (xpath = "//a[@id='OrderCreditEdit']")
+    @FindBy (xpath = "//div[@class='OrderCredit']//a[@id='OrderCreditEdit']")
     private WebElement orderCreditEditButton;
 
-    @FindBy (xpath = "//a[@id='eConsentEdit']")
+    @FindBy (xpath = "//div[@class='eConsent']//a[@id='eConsentEdit']")
     private WebElement eConsentEditButton;
 
     @FindBy (xpath = "//a[@id='steps-uid-0-t-4']//span[@class='d-block']")

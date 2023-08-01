@@ -5,7 +5,9 @@ import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import utils.Driver;
 
@@ -93,8 +95,8 @@ public class SummaryPageStepDefs2 {
 
     @Then("I make necessary changes in Expenses")
     public void i_make_necessary_changes_in_expenses() {
-        ExpensePage exp= new ExpensePage();
-        exp.getMonthlypaymentlabel().sendKeys(Keys.BACK_SPACE,Keys.BACK_SPACE,Keys.BACK_SPACE,"654321");
+//        ExpensePage exp= new ExpensePage();
+        Driver.getDriver().findElement(By.xpath("//div[@class='form-group']//input[@id='monthlyrentalpayment']")).sendKeys(Keys.BACK_SPACE,Keys.BACK_SPACE,Keys.BACK_SPACE,"654321");
     }
 
     //=============
@@ -122,7 +124,10 @@ public class SummaryPageStepDefs2 {
 
     @Then("I make necessary changes in Order Credit")
     public void i_make_necessary_changes_in_order_credit() {
-        summaryPage2.getCreditNoButton().click();
+       WebElement noCheckbox= Driver.getDriver().findElement(By.xpath("//div[@class='checkbox checkbox-danger checkbox-glow']//label[@for='creditreport2']"));
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) Driver.getDriver();
+        jsExecutor.executeScript("arguments[0].click();", noCheckbox);
+//        summaryPage2.getCreditNoButton().click();
     }
 
     //=============
@@ -135,9 +140,14 @@ public class SummaryPageStepDefs2 {
 
     @Then("I make necessary changes in eConsent")
     public void i_make_necessary_changes_in_e_consent() {
-        EconsentPage econsentPage= new EconsentPage();
         Faker faker= new Faker();
-        econsentPage.getFirstName().sendKeys(Keys.BACK_SPACE,Keys.BACK_SPACE,Keys.BACK_SPACE,faker.name().firstName());
+        WebElement firstName= Driver.getDriver().findElement(By.xpath("//div[@class='form-group']//input[@id='eConsentdeclarerFirstName']"));
+        WebElement lastName= Driver.getDriver().findElement(By.xpath("//div[@class='form-group']//input[@id='eConsentdeclarerLastName']"));
+        WebElement email= Driver.getDriver().findElement(By.xpath("//div[@class='form-group']//input[@id='eConsentdeclarerEmail']"));
+       firstName.sendKeys(Keys.BACK_SPACE,Keys.BACK_SPACE,Keys.BACK_SPACE,faker.name().firstName());
+        lastName.sendKeys(Keys.BACK_SPACE,Keys.BACK_SPACE,Keys.BACK_SPACE,faker.name().lastName());
+        email.sendKeys(Keys.BACK_SPACE,Keys.BACK_SPACE,Keys.BACK_SPACE,faker.name().firstName() + "@gmail.com");
+
     }
 
     @Then("I am able to submit the application")
