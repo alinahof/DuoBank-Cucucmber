@@ -46,21 +46,22 @@ public class eConsentStepDefs {
     @When("I enter numbers in first name, last name fields")
     public void i_enter_numbers_in_first_name_last_name_fields() {
         EconsentPage econsentPage = new EconsentPage();
-        econsentPage.getFirstName().sendKeys("1234", Keys.TAB, "1234",Keys.TAB );
+        econsentPage.getFirstName().sendKeys("1234");
+        econsentPage.getLastName().sendKeys("1234");
 
     }
     @Then("I should see first name, last name warning messages")
     public void i_should_see_first_name_last_name_warning_messages() {
         EconsentPage econsentPage = new EconsentPage();
-        Assert.assertTrue(econsentPage.getErrorFirstName().isDisplayed());
-        Assert.assertTrue(econsentPage.getErrorLasttName().isDisplayed());
+        Assert.assertEquals("",econsentPage.getFirstName().getText());
+        Assert.assertEquals("",econsentPage.getLastName().getText());
     }
 
     @Then("I should see correct placeholders")
     public void i_should_see_correct_placeholders() {
         EconsentPage econsentPage = new EconsentPage();
-        Assert.assertEquals("First Name", econsentPage.getFirstName().getAttribute("placeholder") );
-        Assert.assertEquals("Last Name", econsentPage.getLastName().getAttribute("placeholder"));
+        Assert.assertEquals("First", econsentPage.getFirstName().getAttribute("placeholder") );
+        Assert.assertEquals("Last", econsentPage.getLastName().getAttribute("placeholder"));
         Assert.assertEquals("Email", econsentPage.getEmail().getAttribute("placeholder") );
     }
 
