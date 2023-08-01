@@ -15,7 +15,7 @@ Feature: eConsent Page
     Examples:
     |email|
     |john123|
-    |john@gmail|
+    |john.gmail|
 
   @econsent
     Scenario: Verify first name, last name fields accept only letters
@@ -52,7 +52,7 @@ Feature: eConsent Page
     Scenario: Verify that the user should not be able to submit the eConsent agreement without selecting one of the radio buttons
     When I'm on the Econsent page
       Then I should see an error message
-
+#
 
 
 

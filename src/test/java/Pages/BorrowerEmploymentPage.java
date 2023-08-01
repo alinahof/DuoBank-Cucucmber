@@ -111,7 +111,7 @@ public class BorrowerEmploymentPage {
         getPosition().sendKeys(faker.job().position());
         getCity().sendKeys(faker.address().city());
         getState("AK").click();
-        getStartDate().sendKeys(faker.date().toString());
+        getStartDate().sendKeys("01-01-2020");
         getGrossMonthlyIncome().sendKeys(String.valueOf(faker.random().nextInt(901) + 100));
         getMonthlyOvertime().sendKeys(String.valueOf(faker.random().nextInt(901) + 100));
         getMonthlyBonuses().sendKeys(String.valueOf(faker.random().nextInt(901)+100));

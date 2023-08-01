@@ -16,7 +16,7 @@ public class EconsentPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(id = "eConsentdeclarerFirstName")
+    @FindBy(name = "eConsent_declarer_FirstName")
     private WebElement firstName;
 
     @FindBy(id = "eConsentdeclarerLastName")
@@ -25,12 +25,12 @@ public class EconsentPage {
     @FindBy(id = "eConsentdeclarerEmail")
     private WebElement email;
 
-    @FindBy(id = "agree")
+    @FindBy(xpath = "//label[@for='agree']")
     private WebElement agreeButton;
-
-    @FindBy(id = "dontagree")
+//
+    @FindBy(xpath = "//label[@for='dontagree']")
     private WebElement dontagreeButton;
-
+//
     @FindBy(xpath = " //a[@href='#next']")
     private WebElement nextButton;
 
