@@ -15,10 +15,6 @@ Feature: Summary Page
     Then i click on summary page section
 
 
-#  Scenario: I'm on the summary page
-#    When I choose summary section
-#    Then I'm able to edit any section of the application
-#    Then I'm able to submit the application
   @sum
     Scenario: PreApproval Inquiry Edit
       Given I click on the PreApproval edit button
