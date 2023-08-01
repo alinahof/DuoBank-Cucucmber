@@ -93,6 +93,7 @@ public class SummaryPageStepDefs2 {
     @Then("I make necessary changes in Expenses")
     public void i_make_necessary_changes_in_expenses() {
         ExpensePage exp= new ExpensePage();
+        exp.getMonthlypaymentlabel().clear();
         exp.getMonthlypaymentlabel().sendKeys("654321");
     }
 
@@ -108,6 +109,7 @@ public class SummaryPageStepDefs2 {
     public void i_make_necessary_changes_in_employment_income() {
         EmploymentandIncomePage empInc= new EmploymentandIncomePage();
         Faker faker= new Faker();
+        empInc.getEmployerName().clear();
         empInc.getEmployerName().sendKeys(faker.name().fullName());
     }
 
@@ -121,7 +123,8 @@ public class SummaryPageStepDefs2 {
 
     @Then("I make necessary changes in Order Credit")
     public void i_make_necessary_changes_in_order_credit() {
-        summaryPage2.getCreditNoButton().click();
+        summaryPage2.getCreditNoButton().clear();
+                summaryPage2.getCreditNoButton().click();
     }
 
     //=============
@@ -136,6 +139,7 @@ public class SummaryPageStepDefs2 {
     public void i_make_necessary_changes_in_e_consent() {
         EconsentPage econsentPage= new EconsentPage();
         Faker faker= new Faker();
+        econsentPage.getFirstName().clear();
         econsentPage.getFirstName().sendKeys(faker.name().firstName());
     }
 

@@ -18,7 +18,7 @@ public class SummaryPage2 {
     @FindBy (xpath = "//a//span[@class='d-block'][.='Summary']")
     private WebElement summarySection;
 
-    @FindBy (xpath = "//a[@id='PreApprovalEdit']")
+    @FindBy (xpath = "//div[@class='PreApprovalDetails']//a[@href='javascript:void(0)']")
     private WebElement preApprovalEditButton;
 
     @FindBy (xpath = "//a[@id='PersonalnformationEdit']")
