@@ -3,16 +3,9 @@ Feature: Summary Page
   As a user I should be able to review and edit every section of the loan application on summary page section
 
 
-  Background: Common for all steps
+  Background: Login to reach Summary Page
     Given I log in with valid credentials
-    Then I click on the mortgage application section
-    Then I fill out preapproval section
-    Then I fill out personal information section
-    Then I fill out the expenses section
-    Then I fill out Employment and Income page
-    Then I fill out credit report section
-    Then I can fill out eConsent section
-    Then i click on summary page section
+    Then I navigate to Summary Page
 
 
   @sum
