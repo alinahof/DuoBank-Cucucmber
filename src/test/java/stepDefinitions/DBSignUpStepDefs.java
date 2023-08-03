@@ -1,39 +1,79 @@
 package stepDefinitions;
 
+import Pages.SignUpPage;
+import com.beust.ah.A;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import org.junit.Assert;
+import utils.DBUtils;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
-public class DBSignUpStepDefs {
+public class DBSignUpStepDefs extends SignUpPage{
 
-    @Given("I click on the SignUp link")
-    public void i_click_on_the_sign_up_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Then("I retrieve the email")
+    public void i_retrieve_the_email () throws SQLException {
+
+        String email = "test@email.com";
+
+        List<Map<String, Object>> listOfMaps = DBUtils.getQueryResultListOfMaps("SELECT email, first_name FROM tbl_user where email = '"+ email +"'");
+
+        System.out.println(listOfMaps);
+
     }
-    @Then("I fill out the SignUp page")
-    public void i_fill_out_the_sign_up_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("I get Registration successful message")
-    public void i_get_registration_successful_message() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @When("I log into the Data Base")
-    public void i_log_into_the_data_base() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("I retrieve the {string} and {string}")
-    public void i_retrieve_the_and(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+
     @Then("I verify the information is correct")
     public void i_verify_the_information_is_correct() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+
+        String email = "test@email.com";
+
+        List<Map<String, Object>> listOfMaps = DBUtils.getQueryResultListOfMaps("SELECT email, first_name FROM tbl_user where email = '"+ email +"'");
+
+        String expectedEmail = "test@email.com";
+        String expectedFirstName = "testy";
+
+        Assert.assertEquals(expectedEmail, listOfMaps.get(0).get("email"));
+        Assert.assertEquals(expectedFirstName, listOfMaps.get(0).get("first_name"));
     }
-}
+
+    @Given("I retrieve the columns from Data Base")
+    public void iRetrieveTheColumnsFromDataBase() {
+
+     List<Map<String, Object>> mapList  = DBUtils.getQueryResultListOfMaps("""
+             select column_name
+             from information_schema.columns
+             where table_name = 'tbl_user';""");
+        System.out.println(mapList);
+
+    }
+
+    @Then("I verify the columns")
+    public void iVerifyTheColumns() {
+        String[] expectedColumns = {
+                "id", "email", "password", "first_name", "last_name", "phone", "image",
+                "type", "created_at", "modified_at", "zone_id", "church_id", "country_id", "active"
+        };
+
+        List<Map<String, Object>> mapList = DBUtils.getQueryResultListOfMaps("""
+            SELECT COLUMN_NAME
+            FROM INFORMATION_SCHEMA.COLUMNS
+            WHERE TABLE_NAME = 'tbl_user';""");
+
+        List<String> actualColumns = new ArrayList<>();
+        for (Map<String, Object> map : mapList) {
+            actualColumns.add(map.get("COLUMN_NAME").toString());
+        }
+
+        for (String expectedColumn : expectedColumns) {
+            Assert.assertTrue("Column '" + expectedColumn + "' is missing in the database",
+                    actualColumns.contains(expectedColumn));
+        }
+    }
+
+
+    }
+
