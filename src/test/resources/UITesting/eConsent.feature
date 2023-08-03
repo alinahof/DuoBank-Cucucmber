@@ -48,10 +48,7 @@ Feature: eConsent Page
     When I select don't agree and Next
     Then I should be redirected to the main application page
 
-  @econsent
-    Scenario: Verify that the user should not be able to submit the eConsent agreement without selecting one of the radio buttons
-    When I'm on the Econsent page
-      Then I should see an error message
+
 #
 
 

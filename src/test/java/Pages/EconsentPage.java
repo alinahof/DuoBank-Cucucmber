@@ -27,7 +27,10 @@ public class EconsentPage {
 
     @FindBy(xpath = "//label[@for='agree']")
     private WebElement agreeButton;
-//
+
+    @FindBy(id = "agree")
+    private WebElement agreeDefault;
+
     @FindBy(xpath = "//label[@for='dontagree']")
     private WebElement dontagreeButton;
 //
