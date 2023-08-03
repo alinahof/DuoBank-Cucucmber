@@ -12,14 +12,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class DBSignUpStepDefs extends SignUpPage{
+public class DBSignUpStepDefs extends SignUpPage {
 
     @Then("I retrieve the email")
-    public void i_retrieve_the_email () throws SQLException {
+    public void i_retrieve_the_email() throws SQLException {
 
         String email = "test@email.com";
 
-        List<Map<String, Object>> listOfMaps = DBUtils.getQueryResultListOfMaps("SELECT email, first_name FROM tbl_user where email = '"+ email +"'");
+        List<Map<String, Object>> listOfMaps = DBUtils.getQueryResultListOfMaps("SELECT email, first_name FROM tbl_user where email = '" + email + "'");
 
         System.out.println(listOfMaps);
 
@@ -31,7 +31,7 @@ public class DBSignUpStepDefs extends SignUpPage{
 
         String email = "test@email.com";
 
-        List<Map<String, Object>> listOfMaps = DBUtils.getQueryResultListOfMaps("SELECT email, first_name FROM tbl_user where email = '"+ email +"'");
+        List<Map<String, Object>> listOfMaps = DBUtils.getQueryResultListOfMaps("SELECT email, first_name FROM tbl_user where email = '" + email + "'");
 
         String expectedEmail = "test@email.com";
         String expectedFirstName = "testy";
@@ -43,10 +43,10 @@ public class DBSignUpStepDefs extends SignUpPage{
     @Given("I retrieve the columns from Data Base")
     public void iRetrieveTheColumnsFromDataBase() {
 
-     List<Map<String, Object>> mapList  = DBUtils.getQueryResultListOfMaps("""
-             select column_name
-             from information_schema.columns
-             where table_name = 'tbl_user';""");
+        List<Map<String, Object>> mapList = DBUtils.getQueryResultListOfMaps("""
+                select column_name
+                from information_schema.columns
+                where table_name = 'tbl_user';""");
         System.out.println(mapList);
 
     }
@@ -59,9 +59,9 @@ public class DBSignUpStepDefs extends SignUpPage{
         };
 
         List<Map<String, Object>> mapList = DBUtils.getQueryResultListOfMaps("""
-            SELECT COLUMN_NAME
-            FROM INFORMATION_SCHEMA.COLUMNS
-            WHERE TABLE_NAME = 'tbl_user';""");
+                SELECT COLUMN_NAME
+                FROM INFORMATION_SCHEMA.COLUMNS
+                WHERE TABLE_NAME = 'tbl_user';""");
 
         List<String> actualColumns = new ArrayList<>();
         for (Map<String, Object> map : mapList) {
@@ -75,5 +75,24 @@ public class DBSignUpStepDefs extends SignUpPage{
     }
 
 
+    @Given("I retrieve the timestamp column from the DB")
+    public void iRetrieveTheTimestampColumnFromTheDB() {
+
+        List<Map<String, Object>> mapList = DBUtils.getQueryResultListOfMaps("select created_at from tbl_user");
+        System.out.println(mapList);
+
     }
+
+    @Then("I verify that the TimeStamp column is functioning properly")
+    public void iVerifyThatTheTimeStampColumnIsFunctioningProperly() {
+        List<Map<String, Object>> mapList = DBUtils.getQueryResultListOfMaps("select created_at, email from tbl_user where email = 'test@email.com';");
+
+            String timestamp = "2023-08-03 01:41:30";
+
+            Assert.assertEquals(timestamp, mapList.get(0).get("created_at"));
+        }
+
+    }
+
+
 
