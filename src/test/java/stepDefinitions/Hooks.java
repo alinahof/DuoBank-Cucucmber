@@ -40,4 +40,14 @@ public class Hooks {
         DBUtils.close();
     }
 
+    @Before("@DBsmoke")
+    public void setupScenarioForDBsmoke(){
+        DBUtils.createConnection();
+    }
+
+    @After ("@DBsmoke") // after each scenario
+    public void tearDownScenariodbsmoke(){
+        DBUtils.close();
+    }
+
 }

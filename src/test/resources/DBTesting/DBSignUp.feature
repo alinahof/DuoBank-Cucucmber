@@ -16,3 +16,8 @@ Feature: Data Base Login Test:
     Scenario: As a Sdet. I want to verify the DB has the following columns
       Given I retrieve the columns from Data Base
       Then I verify the columns
+
+     @DBsmoke
+      Scenario: Verify that there is a timestamp column in the DB and it works properly
+        Given I retrieve the timestamp column from the DB
+        Then I verify that the TimeStamp column is functioning properly
