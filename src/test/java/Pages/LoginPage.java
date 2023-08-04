@@ -1,6 +1,7 @@
 package Pages;
 
 import lombok.Data;
+import org.junit.runner.notification.RunListener;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -49,8 +50,9 @@ public class LoginPage {
     }
 
     public void validLoginInfo() throws InterruptedException {
-        getEmailAddress().sendKeys("rschwand0@soundcloud.com");
-        getPassword().sendKeys("aD2Z_oq+k'2b");
+        Thread.sleep(1500);
+        getEmailAddress().sendKeys("123123@example.com");
+        getPassword().sendKeys("123");
         getSignInButton().click();
         Thread.sleep(1500);
         getMortgageApp().click();
