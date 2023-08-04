@@ -26,6 +26,10 @@ Feature: Data Base Login Test:
        Scenario: Verify that the data base doesn't have duplicate emails
          Given I retrieve the emails from Data Base and verify there arent duplicates
 
-         @DBsmoke
+         @DB
          Scenario: Verify that passwords are encrypted and stored in database properly
            Given I retrieve password from database and verify its encrypted
+
+           @SignUp
+           Scenario: The Application should be able to handle multiple signups
+             Given I can sign up multiple times for the application
