@@ -17,7 +17,15 @@ Feature: Data Base Login Test:
       Given I retrieve the columns from Data Base
       Then I verify the columns
 
-     @DBsmoke
+     @DB
       Scenario: Verify that there is a timestamp column in the DB and it works properly
         Given I retrieve the timestamp column from the DB
         Then I verify that the TimeStamp column is functioning properly
+
+       @DB
+       Scenario: Verify that the data base doesn't have duplicate emails
+         Given I retrieve the emails from Data Base and verify there arent duplicates
+
+         @DBsmoke
+         Scenario: Verify that passwords are encrypted and stored in database properly
+           Given I retrieve password from database and verify its encrypted
