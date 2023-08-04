@@ -8,4 +8,9 @@ public class SignUpStepDefs {
     public void i_click_on_the_sign_up_link() throws InterruptedException {
         new SignUpPage().fillOutSignUpPage();
     }
+
+    @Given("I can sign up multiple times for the application")
+    public void iCanSignUpMultipleTimesForTheApplication() throws InterruptedException {
+        new SignUpPage().createMultipleSignUps(20);
+    }
 }

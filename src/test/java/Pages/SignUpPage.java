@@ -2,9 +2,12 @@ package Pages;
 
 import com.github.javafaker.Faker;
 import lombok.Data;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Driver;
 
 
@@ -68,5 +71,13 @@ public class SignUpPage {
         passwordField.sendKeys(password);
         signUpButton.click();
         Thread.sleep(2000);
+    }
+
+    public void createMultipleSignUps(int numberOfSignUps) throws InterruptedException {
+        WebDriver driver = Driver.getDriver();
+
+        for (int i = 0; i < numberOfSignUps; i++) {
+            fillOutSignUpPage();
+        }
     }
 }
