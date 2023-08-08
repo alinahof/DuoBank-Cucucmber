@@ -1,5 +1,14 @@
 Feature: Preapproval Details page data
 
+  @sprint5 @today
+    Scenario: End-to-end UI testing
+    Given I sign up as a new user
+    And I log in with new credentials
+    When I fill out the application completely and submit it
+    Then I can verify the submission
+    And I log out
+
+
 
    @DB @sprint5
 Scenario: Verify Preapproval Details page information in DB

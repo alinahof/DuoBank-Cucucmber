@@ -143,7 +143,9 @@ public class PreapprovalDetailsPage {
         Driver.getDriver().findElement(By.linkText("Mortgage Application")).click();
     }
 
-
+public void getAppListPage(){
+    Driver.getDriver().findElement(By.linkText("Application List")).click();
+}
 
 
 }

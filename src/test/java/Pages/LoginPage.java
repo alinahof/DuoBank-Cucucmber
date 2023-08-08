@@ -33,6 +33,10 @@ public class LoginPage {
 
     @FindBy(xpath = "//span[@class='menu-title']") private WebElement dashBoardtitle;
 
+    @FindBy(xpath = "//span[@class='user-name']")
+    private WebElement userNameEE;
+
+
 
     public void loginWithValidCredentials(){
         login(ConfigReader.getProperty("email"),ConfigReader.getProperty("password"));
