@@ -65,4 +65,39 @@ public class PreaaprovalInquiryPage {
         Pages.BorrowerEmploymentPage borrowerEmploymentPage = new Pages.BorrowerEmploymentPage();
         borrowerEmploymentPage.borrowPageInfo();
     }
+    public void fillOutApplicationNoLogin(String firstName,
+                                   String lastName,
+                                   String email,
+                                   String dob,
+                                   String ssn,
+                                   String cellPhone,
+                                   String homePhone) {
+        PreapprovalDetailsPage preapprovalDetailsPage = new PreapprovalDetailsPage();
+        preapprovalDetailsPage.getPApage();
+        preapprovalDetailsPage.getRealtorInfo().sendKeys("John Smith, 412-123-1234, john@gmail.com");
+        preapprovalDetailsPage.getEstPrice().sendKeys("10000");
+        preapprovalDetailsPage.getDownPayment().sendKeys("1000");
+        preapprovalDetailsPage.getNextButton().click();
+
+        PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+        personalInformationPage.getNoCheckBox();
+        personalInformationPage.getFirstNameField().sendKeys(firstName);
+        personalInformationPage.getLastNameField().sendKeys(lastName);
+        personalInformationPage.getEmailFieldBorrower().sendKeys(email);
+        personalInformationPage.getDobBorrower().sendKeys(dob);
+        personalInformationPage.getSsnFieldBorrower().sendKeys(ssn);
+
+        Select status = new Select(personalInformationPage.getMaritalField2());
+        status.selectByIndex(2);
+        personalInformationPage.getCellphoneBorrower().sendKeys(cellPhone);
+        personalInformationPage.getHomephoneBorrower().sendKeys(homePhone);
+        personalInformationPage.getNextButton().click();
+
+        ExpensePage expensesPage = new ExpensePage();
+        expensesPage.getRentalpayment().sendKeys("1000");
+        expensesPage.getNextButton().click();
+
+        Pages.BorrowerEmploymentPage borrowerEmploymentPage = new Pages.BorrowerEmploymentPage();
+        borrowerEmploymentPage.borrowPageInfo();
+    }
 }

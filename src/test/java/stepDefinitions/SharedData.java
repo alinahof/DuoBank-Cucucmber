@@ -17,4 +17,9 @@ public class SharedData {
     private String passMD5;
     private List<String> dbColumnNames;
     private List<String> emailsColumn;
+
+    private String firstNameEE;
+    private String lastNameEE;
+    private String emailEE;
+    private String passwordEE;
 }
