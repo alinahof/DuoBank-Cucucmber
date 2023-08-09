@@ -1,6 +1,8 @@
 name: Example Test
 run-name: Testing a single test
 on:
+  schedule:
+    - cron: '30 * * * *'
   push:
     branches:
       - main
