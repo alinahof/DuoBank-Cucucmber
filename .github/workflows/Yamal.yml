@@ -1,13 +1,16 @@
-name: Example Test
-run-name: Testing a single test
+name: Yamal Smoke and Regression Test
+run-name: Testing Smoke and Regression Tests
 on:
   schedule:
+    # Run the smoke test every hour at the 30th minute
     - cron: '30 * * * *'
+    # Run the regression test every day at midnight
+    - cron: '0 0 * * *'
   push:
     branches:
       - main
 jobs:
-  Run-A-Single-UI-Test:
+  Run-UI-Tests:
     runs-on: ubuntu-latest
     steps:
       - name: Clone the repository
@@ -35,11 +38,11 @@ jobs:
           sudo mv chromedriver /usr/bin/chromedriver
           sudo chown root:root /usr/bin/chromedriver
           sudo chmod +x /usr/bin/chromedriver
-      - name: Run Smoke Tests
+      - name: Run UI Tests
         run: mvn test
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: Yamal Smoke Test Results HTML File
+          name: Smoke and Regression Test Results HTML File
           path: target/cucumber-report/report.html
