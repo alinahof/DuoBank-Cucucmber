@@ -43,7 +43,7 @@ jobs:
           sudo chown root:root /usr/bin/chromedriver
           sudo chmod +x /usr/bin/chromedriver
       - name: Run Smoke Tests
-        run: mvn test
+        run:  mvn test -D xmlfile=smoke-tests.xml
       - name: Upload Smoke Test Results
         if: always()
         uses: actions/upload-artifact@v2
@@ -83,7 +83,7 @@ jobs:
           sudo chown root:root /usr/bin/chromedriver
           sudo chmod +x /usr/bin/chromedriver
       - name: Run Regression Tests
-        run: mvn test
+        run: mvn test -D xmlfile=regression-tests.xml
       - name: Upload Regression Test Results
         if: always()
         uses: actions/upload-artifact@v2
@@ -123,7 +123,7 @@ jobs:
           sudo chown root:root /usr/bin/chromedriver
           sudo chmod +x /usr/bin/chromedriver
       - name: Run Database Tests
-        run: mvn test -Dtest=DatabaseTests
+        run: mvn test -D cucumber.filters.tags=DB
       - name: Upload Database Test Results
         if: always()
         uses: actions/upload-artifact@v2
