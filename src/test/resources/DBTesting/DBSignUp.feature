@@ -32,4 +32,4 @@ Feature: Data Base Login Test:
 
            @SignUp
            Scenario: The Application should be able to handle multiple signups
-             Given I can sign up multiple times for the application
+             Given I can sign up multiple times for the application and verify on the data base

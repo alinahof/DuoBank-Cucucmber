@@ -2,12 +2,14 @@ package stepDefinitions;
 
 import Pages.SignUpPage;
 import com.beust.ah.A;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Assert;
 import utils.DBUtils;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class DBSignUpStepDefs extends SignUpPage {
@@ -117,7 +119,10 @@ public class DBSignUpStepDefs extends SignUpPage {
         String password1 = password.get("password").toString();
         Assert.assertEquals(sharedData.getPassMD5(),password1);
         }
+
+
     }
+
 
 
 

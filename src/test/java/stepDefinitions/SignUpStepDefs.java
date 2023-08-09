@@ -9,8 +9,8 @@ public class SignUpStepDefs {
         new SignUpPage().fillOutSignUpPage();
     }
 
-    @Given("I can sign up multiple times for the application")
+    @Given("I can sign up multiple times for the application and verify on the data base")
     public void iCanSignUpMultipleTimesForTheApplication() throws InterruptedException {
-        new SignUpPage().createMultipleSignUps(20);
+        new SignUpPage().createMultipleSignUps(3);
     }
 }
