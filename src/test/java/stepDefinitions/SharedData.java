@@ -22,4 +22,6 @@ public class SharedData {
     private String lastNameEE;
     private String emailEE;
     private String passwordEE;
+    private List<String> income_source;
+    private List<String> column;
 }

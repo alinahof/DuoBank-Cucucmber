@@ -1,6 +1,6 @@
 Feature: Preapproval Details page data
 
-  @sprint5 @today
+
     Scenario: End-to-end UI testing
     Given I sign up as a new user
     And I log in with new credentials
@@ -10,7 +10,7 @@ Feature: Preapproval Details page data
 
 
 
-   @DB @sprint5
+   @DB
 Scenario: Verify Preapproval Details page information in DB
   Given I choose credit report option
   And I select agree and Next
@@ -30,7 +30,7 @@ Scenario: Verify Preapproval Details page information in DB
 
 
 
-    @DB @sprint5
+    @DB
     Scenario: Verify that id column is auto-incrementing primary key
       Given I choose credit report option
       And I select agree and Next
@@ -38,7 +38,7 @@ Scenario: Verify Preapproval Details page information in DB
       Then id column is stored as an auto-incremented primary key
 
 
-  @DB @sprint5
+  @DB
   Scenario: Verify that realtor_status and loan_officer_status column values stored as integers
     Given I choose credit report option
     And I select agree and Next
@@ -47,7 +47,7 @@ Scenario: Verify Preapproval Details page information in DB
       | realtor_status | loan_officer_status |
       |1               |1                    |
 
-  @DB @sprint5
+  @DB
   Scenario: Verify that realtor_info, purpose_loan and src_down_payment column values stored as strings
     Given I choose credit report option
     And I select agree and Next
@@ -55,7 +55,7 @@ Scenario: Verify Preapproval Details page information in DB
     Then The values of the following fields are stored as string
 
 
-  @DB @sprint5
+  @DB
   Scenario: Verify that est_purchase_price, down_payment< down_payment_percent, total_loan_amount, add-fund_available column values stored as integers
     Given I choose credit report option
     And I select agree and Next
