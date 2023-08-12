@@ -1,0 +1,55 @@
+name:  branch  regression tests
+run-name: Running nightly regression tests
+
+on:
+  schedule:
+    cron: '0 0 * * 1-5'  # minute,hour,day of month,month,day of week
+    # runs test at midnight everyday Mon-Fri
+jobs:
+  branch-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+
+      - name: Setup Maven
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Setup Chrome Browser
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 'stable'
+
+      - name: Run branch Tests
+        run: mvn test -Dcucumber.filter.tags="@branch" -Dbrowser=chromeheadless
+
+      - name: Upload test Results
+        if: always()
+        uses: actions/upload-atrifact@v3
+        with:
+          name: Test Results HTML File
+          path: target/cucumber-report/report.html
+
+
+      - name: Send failure email
+        if: failure() # Only run this step if the workflow fails
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.yahoo.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Tests failed
+          body: Check the failed workflow run at ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          to: email@example.com # if someone wants to they can add their email
+          from: email@example.com

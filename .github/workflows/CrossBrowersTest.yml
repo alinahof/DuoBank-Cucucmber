@@ -1,0 +1,60 @@
+name: Cross Browser Tests         #  Tag for Cross Browser test is @CB
+run-name: Cross Browser Push Test
+on:
+  push:
+    branches:
+      - main
+jobs:
+
+  branch-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+
+      - name: Setup Maven
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Setup Chrome Browser
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 'stable'
+
+      - name: Setup Edge Browser
+        uses: browser-actions/setup-edge@v1
+        with:
+          edge-version: 'stable'
+
+      - name: Setup Firefox Browser
+        uses: browser-actions/setup-firefox@v1
+        with:
+          firefox-version: '116.0.2'
+
+      - name: Run Smoke Tests in headless Chrome
+        if: always()
+        run: mvn test -Dcucumber.filter.tags="@CB" -Dbrowser=chromeheadless -Dcucumber.plugin="html:target/cucumber-report/chrome-report.html"
+
+      - name: Run Smoke Tests in headless Edge
+        if: always()
+        run: mvn test -Dcucumber.filter.tags="@CB" -Dbrowser=edgeheadless -Dcucumber.plugin="html:target/cucumber-report/edge-report.html"
+
+      - name: Run Smoke Tests in headless Firefox
+        if: always()
+        run: mvn test -Dcucumber.filter.tags="@CB" -Dbrowser=firefoxheadless -Dcucumber.plugin="html:target/cucumber-report/firefox-report.html"
+
+      - name: Generate Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Report Files
+          path: target/cucumber-report
