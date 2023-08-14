@@ -3,7 +3,7 @@ Feature: eConsent Page
   Background: I'm on eConsent page
     Given I choose credit report option
 
-  @econsent @smoke
+  @econsent
     Scenario: Verify first name, last name, email fields are required
       When I Leave the first name, last name, email fields field empty
       Then I should see a warning message

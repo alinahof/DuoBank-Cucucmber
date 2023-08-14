@@ -6,7 +6,7 @@ on:
       - main
 jobs:
 
-  branch-tests:
+  smoke-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
