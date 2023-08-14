@@ -31,7 +31,7 @@ jobs:
           chrome-version: 'stable'
 
       - name: Run branch Tests
-        run: mvn test -Dcucumber.filter.tags="@branch" -Dbrowser=chromeheadless
+        run: mvn test -D cucumber.filter.tags="@branch" -D browser=chromeheadless
 
       - name: Upload test Results
         if: always()
