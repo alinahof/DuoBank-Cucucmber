@@ -5,7 +5,6 @@ on:
     branches:
       - main
 jobs:
-
   smoke-tests:
     runs-on: ubuntu-latest
     steps:
@@ -42,15 +41,15 @@ jobs:
 
       - name: Run Smoke Tests in headless Chrome
         if: always()
-        run: mvn test -Dcucumber.filter.tags="@CB" -Dbrowser=chromeheadless -Dcucumber.plugin="html:target/cucumber-report/chrome-report.html"
+        run: mvn test -Dcucumber.filter.tags="@smoke" -Dbrowser=chromeheadless -Dcucumber.plugin="html:target/cucumber-report/chrome-report.html"
 
       - name: Run Smoke Tests in headless Edge
         if: always()
-        run: mvn test -Dcucumber.filter.tags="@CB" -Dbrowser=edgeheadless -Dcucumber.plugin="html:target/cucumber-report/edge-report.html"
+        run: mvn test -Dcucumber.filter.tags="@smoke" -Dbrowser=edgeheadless -Dcucumber.plugin="html:target/cucumber-report/edge-report.html"
 
       - name: Run Smoke Tests in headless Firefox
         if: always()
-        run: mvn test -Dcucumber.filter.tags="@CB" -Dbrowser=firefoxheadless -Dcucumber.plugin="html:target/cucumber-report/firefox-report.html"
+        run: mvn test -Dcucumber.filter.tags="@smoke" -Dbrowser=firefoxheadless -Dcucumber.plugin="html:target/cucumber-report/firefox-report.html"
 
       - name: Generate Report
         if: always()
