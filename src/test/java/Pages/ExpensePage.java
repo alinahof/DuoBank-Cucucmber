@@ -3,6 +3,7 @@ package Pages;
 import com.github.javafaker.Faker;
 import lombok.Data;
 import lombok.Getter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -36,6 +37,10 @@ public class ExpensePage {
     private WebElement mortgagepaymenterror;
     @FindBy(xpath = "//a[@href='#next']")
     private WebElement nextButton;
+
+
+    @FindBy(xpath = "//input[@id='firtmortagagetotalpayment']" )
+    private WebElement firstMortgagePayment;
 
 
 
