@@ -24,4 +24,12 @@ public class SharedData {
     private String passwordEE;
     private List<String> income_source;
     private List<String> column;
+    
+     static {
+        RestAssured.baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com";
+    }
+    private RequestSpecification requestSpecification = given();
+    private Response response;
+
 }
+
