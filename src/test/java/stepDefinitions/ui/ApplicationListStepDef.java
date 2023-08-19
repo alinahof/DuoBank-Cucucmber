@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.ui;
 
 import Pages.ApplicationListPage;
 import Pages.LoginPage;

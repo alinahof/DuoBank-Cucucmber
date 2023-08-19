@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.ui;
 
 import Pages.SummaryPage;
 import io.cucumber.java.en.Given;

@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.DB;
 
 import Pages.ExpensePage;
 import Pages.LoginPage;
@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import stepDefinitions.SharedData;
 import utils.DBUtils;
 import utils.Driver;
 

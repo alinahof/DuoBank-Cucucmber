@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.ui;
 
 import Pages.*;
 import com.github.javafaker.Faker;
@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import stepDefinitions.SharedData;
 import utils.Driver;
 
 public class EndToEndTesting {

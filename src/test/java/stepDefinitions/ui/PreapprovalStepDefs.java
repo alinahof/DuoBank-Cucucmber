@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.ui;
 
 import Pages.PreApprovalPage;
 import com.github.javafaker.Faker;

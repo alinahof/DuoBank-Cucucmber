@@ -1,8 +1,9 @@
-package stepDefinitions;
+package stepDefinitions.ui;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import stepDefinitions.SharedData;
 import utils.DBUtils;
 
 import java.lang.reflect.Array;

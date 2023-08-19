@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.ui;
 
 import Pages.EconsentPage;
 import com.github.javafaker.Faker;
