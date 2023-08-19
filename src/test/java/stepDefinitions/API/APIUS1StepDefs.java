@@ -3,13 +3,17 @@ package stepDefinitions.API;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.path.json.JsonPath;
+import org.junit.Assert;
 import stepDefinitions.SharedData;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasKey;
-import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.*;
 
 public class APIUS1StepDefs {
     SharedData sharedData;
@@ -24,18 +28,20 @@ public class APIUS1StepDefs {
 
     }
 
-    @Then("you verify that the JSON has following fileds")
-    public void you_verify_that_the_json_has_following_fileds(io.cucumber.datatable.DataTable dataTable) {
-        List<Map<String, Object>> users = sharedData.getResponse().jsonPath().getList("");
-        Map<String, Object> firstUser = users.get(0);
+    @Then("the response should contain a list of all users with the following fields")
+    public void the_response_should_contain_a_list_of_all_users_with_the_following_fields(List<String> expectedKeys) {
 
-        List<String> expectedColumns = dataTable.asList(String.class);
+//        List<Map<String, Object>> list = sharedData.getResponse().then().extract().path("$");
+//
+//        for (Map<String, Object> eachUser : list) {
+//            Assert.assertEquals(new HashSet<>(expectedKeys), eachUser.keySet());
+//        }
 
-        for (String columnName : expectedColumns) {
-            assertThat(firstUser, hasKey(columnName));
+        for (String key : expectedKeys) {
+            sharedData.getResponse().then().body("[0]", hasKey(key));
         }
-
     }
+
     @Given("{string} header is set to {string}")
     public void header_is_set_to(String key, String value) {
         sharedData.getRequestSpecification().
