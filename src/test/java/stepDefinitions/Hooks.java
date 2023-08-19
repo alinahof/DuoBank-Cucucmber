@@ -3,6 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.restassured.RestAssured;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import utils.ConfigReader;
@@ -12,7 +13,7 @@ import java.time.Duration;
 
 public class Hooks {
 
-    @Before("not @DBsmoke")  // before each scenario
+    @Before("not @DBsmoke or @API")  // before each scenario
     public void setupScenario(){
         Driver.getDriver().manage().window().maximize();
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -48,6 +49,11 @@ public class Hooks {
     @After ("@DBsmoke") // after each scenario
     public void tearDownScenariodbsmoke(){
         DBUtils.close();
+    }
+
+    @Before("@API")
+    public void setupBaseAPI(){
+        RestAssured.baseURI = ConfigReader.getProperty("API.URI");
     }
 
 }
