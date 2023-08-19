@@ -21,7 +21,7 @@ public class Hooks {
 
     }
 
-    @After("not DBsmoke") // after each scenario
+    @After("not DBsmoke or @API") // after each scenario
     public void tearDownScenario(Scenario scenario){
         if(scenario.isFailed()){
             byte[] screenshotFile = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
@@ -38,16 +38,6 @@ public class Hooks {
 
     @After ("@DB") // after each scenario
     public void tearDownScenario2(){
-        DBUtils.close();
-    }
-
-    @Before("@DBsmoke")
-    public void setupScenarioForDBsmoke(){
-        DBUtils.createConnection();
-    }
-
-    @After ("@DBsmoke") // after each scenario
-    public void tearDownScenariodbsmoke(){
         DBUtils.close();
     }
 

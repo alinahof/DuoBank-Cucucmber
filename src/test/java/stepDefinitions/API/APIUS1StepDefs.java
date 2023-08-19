@@ -31,12 +31,6 @@ public class APIUS1StepDefs {
     @Then("the response should contain a list of all users with the following fields")
     public void the_response_should_contain_a_list_of_all_users_with_the_following_fields(List<String> expectedKeys) {
 
-//        List<Map<String, Object>> list = sharedData.getResponse().then().extract().path("$");
-//
-//        for (Map<String, Object> eachUser : list) {
-//            Assert.assertEquals(new HashSet<>(expectedKeys), eachUser.keySet());
-//        }
-
         for (String key : expectedKeys) {
             sharedData.getResponse().then().body("[0]", hasKey(key));
         }
