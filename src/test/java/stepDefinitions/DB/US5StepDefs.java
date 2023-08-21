@@ -1,4 +1,4 @@
-package stepDefinitions.ui;
+package stepDefinitions.DB;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,6 +15,8 @@ import java.util.Set;
 public class US5StepDefs {
     SharedData sharedData;
     List<String> newList;
+
+    List<String> newList2;
     Set<String> set;
 
     public US5StepDefs(SharedData sharedData) {
@@ -37,9 +39,9 @@ public class US5StepDefs {
         Assert.assertEquals(expected, sharedData.getDbColumnNames());
     }
 
-    @When("I send a query to retrieve income_source from the db")
-    public void i_send_a_query_to_retrieve_income_source_from_the_db() {
-        List<List<Object>> list = DBUtils.getQueryResultAsListOfLists("select income_source from tbl_mortagage GROUP BY income_source");
+    @When("I send a query to retrieve {string} from the db")
+    public void iSendAQueryToRetrieveFromTheDb(String str) {
+        List<List<Object>> list = DBUtils.getQueryResultAsListOfLists("select "+ str +" from tbl_mortagage GROUP BY "+str);
         sharedData.setIncome_source(DBUtils.getColumnData(list, 0));
 
         newList= new ArrayList<>();
@@ -48,7 +50,7 @@ public class US5StepDefs {
                 newList.add(obj.toString());
             }
         }
-        List<String> list2=new ArrayList<>();;
+        List<String> list2=new ArrayList<>();
         for (int i = 1; i < newList.size(); i++) {
             String [] parts = newList.get(i).substring(1,newList.get(i).length()-1).split(",");
             for (String part : parts) {
@@ -57,6 +59,7 @@ public class US5StepDefs {
         }
         this.set = new HashSet<>(list2);
         set.removeIf(s -> s.isEmpty());
+        System.out.println(set);
 
 
     }
@@ -77,6 +80,7 @@ public class US5StepDefs {
             Assert.assertTrue(!str.equals("") && !str.equals("[\"\"]") );
         }
     }
+
 
 
 }
