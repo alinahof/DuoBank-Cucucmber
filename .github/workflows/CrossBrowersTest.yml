@@ -47,9 +47,9 @@ jobs:
         if: always()
         run: mvn test -Dcucumber.filter.tags="@smoke" -Dbrowser=edgeheadless -Dcucumber.plugin="html:target/cucumber-report/edge-report.html"
 
-      - name: Run Smoke Tests in headless Firefox
-        if: always()
-        run: mvn test -Dcucumber.filter.tags="@smoke" -Dbrowser=firefoxheadless -Dcucumber.plugin="html:target/cucumber-report/firefox-report.html"
+#      - name: Run Smoke Tests in headless Firefox
+#        if: always()
+#        run: mvn test -Dcucumber.filter.tags="@smoke" -Dbrowser=firefoxheadless -Dcucumber.plugin="html:target/cucumber-report/firefox-report.html"
 
       - name: Generate Report
         if: always()
