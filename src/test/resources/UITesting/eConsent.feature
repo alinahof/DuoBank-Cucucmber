@@ -8,7 +8,7 @@ Feature: eConsent Page
       When I Leave the first name, last name, email fields field empty
       Then I should see a warning message
 
-  @econsent @smoke
+  @econsent
       Scenario Outline: Verify email format
         When I enter invalid "<email>"  format
         Then I should see a email warning message
@@ -38,12 +38,12 @@ Feature: eConsent Page
         When I'm on the Econsent page
         Then Agree should be selected
 
-  @econsent @smoke
+  @econsent
   Scenario: Verify "Agree" functionality
     When I select agree and Next
     Then I should be redirected to the next page
 
-  @econsent @smoke
+  @econsent
   Scenario: Verify " Don't Agree" functionality
     When I select don't agree and Next
     Then I should be redirected to the main application page

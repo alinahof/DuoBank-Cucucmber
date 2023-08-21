@@ -1,5 +1,5 @@
 @api_only
-@API
+@API @smoke
 Feature: GET /user API endpoint features
 
 

@@ -1,6 +1,6 @@
 
 @api_only
-@API
+@API @smoke
 
 Feature: API User Story 1 for API endpoint testing
 
