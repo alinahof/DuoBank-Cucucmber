@@ -58,7 +58,7 @@ public class LoginPage {
         getEmailAddress().sendKeys("123123@example.com");
         getPassword().sendKeys("123");
         getSignInButton().click();
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         getMortgageApp().click();
     }
 
