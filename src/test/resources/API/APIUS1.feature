@@ -1,44 +1,50 @@
 
-
+@api_only
+@API
 
 Feature: API User Story 1 for API endpoint testing
 
-  @API
-  Scenario: The API should require a authentication key for access
-    And "Accept" header is set to "application/json"
-    And "x-api-key" header is set to "c8a912d7d1c5a5a99c508f865b5eaae14a5b484f5bfe2d8f48c40e46289b47f3"
-    When I send a "GET" request to endpoint "/users"
 
-  @API
-  Scenario: The API should have fields in the body of the JSON
-    And "Accept" header is set to "application/json"
-    And "x-api-key" header is set to "c8a912d7d1c5a5a99c508f865b5eaae14a5b484f5bfe2d8f48c40e46289b47f3"
-    When I send a "GET" request to endpoint "/users"
-    And the response should contain a list of all users with the following fields
-      | id          |
-      | email       |
-      | first_name  |
-      | last_name   |
-      | phone       |
-      | image       |
-      | type        |
-      | created_at  |
-      | modified_at |
-      | zone_id     |
-      | church_id   |
-      | active      |
 
-  @API
-  Scenario: The API should complete a request under 500ms
-    And "Accept" header is set to "application/json"
-    And "x-api-key" header is set to "c8a912d7d1c5a5a99c508f865b5eaae14a5b484f5bfe2d8f48c40e46289b47f3"
-    When I send a "GET" request to endpoint "/user?id=12"
-    And response time should be less than 500 ms
+ Scenario: Retrieve all users successfully
 
-  @API
-  Scenario: The API should allow you to choose the amount of results on the request
-    And "Accept" header is set to "application/json"
-    And "x-api-key" header is set to "c8a912d7d1c5a5a99c508f865b5eaae14a5b484f5bfe2d8f48c40e46289b47f3"
-    When I send a "GET" request to endpoint "/users"
-    And "pages" query Parameter is set to "2"
-    And response time should be less than 500 ms
+   Given the request is authenticated with a valid API key
+   And the request "Content-type" header is set to "application/json"
+   When I send a "GET" request to the endpoint "/users"
+   Then the response log should be displayed
+   Then the response status code should be 200
+   And the response "Content-Type" header should be "application/json"
+   And the response time should be less than 500 ms
+   And the response should contain a list of all users with the following fields
+     | id          |
+     | email       |
+     | first_name  |
+     | last_name   |
+     | phone       |
+     | image       |
+     | type        |
+     | created_at  |
+     | modified_at |
+     | zone_id     |
+     | church_id   |
+     | active      |
+
+  Scenario: Invalid api key
+
+    Given the request is not authenticated with a valid API key
+    And the request "Content-Type" header is set to "application/json"
+    When I send a "GET" request to the endpoint "/users"
+    Then the response log should be displayed
+    Then the response status code should be 401
+    Then the response body should have "message" field with value "Invalid or missing API Key. Provide a valid api key with 'api_key' query parameter."
+
+
+  Scenario: Invalid method type
+
+    Given the request is authenticated with a valid API key
+    And the request "Content-Type" header is set to "application/json"
+    When I send a "POST" request to the endpoint "/users"
+    Then the response log should be displayed
+    Then the response status code should be 405
+    Then the response body should have "message" field with value "Invalid request method"
+
