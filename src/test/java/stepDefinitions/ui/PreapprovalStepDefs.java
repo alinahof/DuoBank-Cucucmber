@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import utils.Driver;
 
 
@@ -17,8 +18,12 @@ public class PreapprovalStepDefs {
     public void i_click_on_the_mortgage_application() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         Thread.sleep(2000);
+
         WebElement mortgageAppLink = Driver.getDriver().findElement(By.xpath("//span[@class='menu-item'][.='Mortgage Application']"));
-        js.executeScript("arguments[0].click();", mortgageAppLink);
+
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(mortgageAppLink).click().perform();
+
         Thread.sleep(2000);
     }
 
