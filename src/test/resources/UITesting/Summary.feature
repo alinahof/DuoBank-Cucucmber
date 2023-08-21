@@ -9,7 +9,7 @@ Feature: Summary page review & edit
       Then I fill out personal information section
       Then I fill out the expenses page
       Then I fill out Employment&Income page
-      Then I fill out credit report
+      Then I choose credit report option
       Then I can fill out eConsent with javascript
 
   @summary
