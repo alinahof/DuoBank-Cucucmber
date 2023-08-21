@@ -63,7 +63,7 @@ public class LoginPage {
         Thread.sleep(2000);
         WebDriver driver = Driver.getDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click();", getMotgageApp());
+        js.executeScript("arguments[0].click();", getMortgageApp());
     }
 
     public boolean isButtonDisabledSignInWithEmailOnly(WebElement button ){
