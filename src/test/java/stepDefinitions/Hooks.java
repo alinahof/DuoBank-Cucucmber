@@ -24,7 +24,7 @@ public class Hooks {
 
     }
 
-    @After("not DBsmoke or @api_only") // after each scenario
+    @After("not (DBsmoke or @api_only)") // after each scenario
     public void tearDownScenario(Scenario scenario) {
         if (scenario.isFailed()) {
 
