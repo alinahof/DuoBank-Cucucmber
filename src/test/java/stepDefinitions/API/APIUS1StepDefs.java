@@ -3,17 +3,9 @@ package stepDefinitions.API;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.path.json.JsonPath;
-import org.junit.Assert;
 import stepDefinitions.SharedData;
 import utils.ConfigReader;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class APIUS1StepDefs {
