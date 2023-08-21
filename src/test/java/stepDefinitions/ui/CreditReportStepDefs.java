@@ -41,7 +41,6 @@ public class CreditReportStepDefs {
    @Then("I fill out credit report")
         public void i_fill_out_credit_page() throws InterruptedException {
        Pages.PreaaprovalInquiryPage preaaprovalInquiryPage = new Pages.PreaaprovalInquiryPage();
-       preaaprovalInquiryPage.fillOutApplication("Jane", "Doe", "jane@gmail.com", "12-12-2000", "123-12-1215", "123-123-1234", "123-123-1234");
        Thread.sleep(2000);
 
        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();",

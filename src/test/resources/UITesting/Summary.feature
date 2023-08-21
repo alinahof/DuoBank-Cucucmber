@@ -9,7 +9,7 @@ Feature: Summary page review & edit
       Then I fill out personal information section
       Then I fill out the expenses page
       Then I fill out Employment&Income page
-      Then I choose credit report option
+      Then I fill out credit report
       Then I can fill out eConsent with javascript
 
   @summary
@@ -43,6 +43,6 @@ Feature: Summary page review & edit
     Given I click on the eConsent
     Then I save loan application
 
-    @smoke
+
   Scenario: Complete Application Loan Process
       Given I save loan application
