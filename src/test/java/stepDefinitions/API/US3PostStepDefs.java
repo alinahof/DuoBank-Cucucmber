@@ -59,11 +59,11 @@ public class US3PostStepDefs {
 //    public void the_response_header_should_be(String key, String value) {
 //        sharedData.getResponse().then().header(key, value);
 //    }
-    @Then("the response time should be less than {int} ms")
-    public void the_response_time_should_be_less_than_ms(Long ms) {
-        sharedData.getResponse().then().time(lessThan(ms));
-
-    }
+//    @Then("the response time should be less than {int} ms")
+//    public void the_response_time_should_be_less_than_ms(Long ms) {
+//        sharedData.getResponse().then().time(lessThan(ms));
+//
+//    }
     @Then("I delete the created user")
     public void i_delete_the_created_user() {
         Integer userId =   sharedData.getResponse().path("user_id");
