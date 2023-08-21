@@ -39,18 +39,14 @@ public class CreditReportStepDefs {
     }
 
    @Then("I fill out credit report")
-        public void i_fill_out_credit_page(){
-                WebDriver driver = Driver.getDriver();
-                PreaaprovalInquiryPage preapprovalInquiryPage = new PreaaprovalInquiryPage();
+        public void i_fill_out_credit_page() throws InterruptedException {
+       Pages.PreaaprovalInquiryPage preaaprovalInquiryPage = new Pages.PreaaprovalInquiryPage();
+       preaaprovalInquiryPage.fillOutApplication("Jane", "Doe", "jane@gmail.com", "12-12-2000", "123-12-1215", "123-123-1234", "123-123-1234");
+       Thread.sleep(2000);
 
-
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-                WebElement noReportElement = wait.until(ExpectedConditions.elementToBeClickable(preapprovalInquiryPage.getNoReport()));
-                Actions actions = new Actions(driver);
-                actions.moveToElement(noReportElement).click().perform();
-
-
-                new PreaaprovalInquiryPage().getNextButton().click();
+       ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();",
+               preaaprovalInquiryPage.getNoReport());
+       preaaprovalInquiryPage.getNextButton().click();
             }
         }
 
