@@ -17,7 +17,7 @@ public class PreaaprovalInquiryPage {
     //(xpath = "//label[@for='creditreport1']")
     private WebElement orderReport;
 
-    @FindBy(xpath = "//input[@id='creditreport2']")
+    @FindBy(xpath = "//label[@for='creditreport2']")
 
     private WebElement noReport;
 

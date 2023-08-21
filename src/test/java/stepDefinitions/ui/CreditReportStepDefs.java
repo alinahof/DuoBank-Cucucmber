@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Driver;
@@ -42,14 +43,13 @@ public class CreditReportStepDefs {
                 WebDriver driver = Driver.getDriver();
                 PreaaprovalInquiryPage preapprovalInquiryPage = new PreaaprovalInquiryPage();
 
-                // Wait for the "No Report" element to be available
+
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
                 WebElement noReportElement = wait.until(ExpectedConditions.elementToBeClickable(preapprovalInquiryPage.getNoReport()));
+                Actions actions = new Actions(driver);
+                actions.moveToElement(noReportElement).click().perform();
 
-                // Click on the "No Report" element using JavaScriptExecutor
-                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", noReportElement);
 
-                // Click on the "Next" button
                 new PreaaprovalInquiryPage().getNextButton().click();
             }
         }
