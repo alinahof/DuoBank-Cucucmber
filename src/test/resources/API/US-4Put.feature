@@ -1,4 +1,5 @@
 @API
+@api_only
 Feature: PUT /user API endpoint features
 
   Scenario: The API should require an authentication via API key

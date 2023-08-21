@@ -1,4 +1,5 @@
 @API
+@api_only
   Feature: POST /user API endpoint features
 
 

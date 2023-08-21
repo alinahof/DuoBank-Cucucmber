@@ -11,10 +11,10 @@ public class US4PutStepDefs {
         this.sharedData = sharedData;
     }
 
-    @And("the request {string} query parameter is set to {string}")
-    public void theRequestQueryParameterIsSetTo(String key, String value) {
-
-        sharedData.getRequestSpecification().queryParam(key, value);
-    }
+//    @And("the request {string} query parameter is set to {string}")
+//    public void theRequestQueryParameterIsSetTo(String key, String value) {
+//
+//        sharedData.getRequestSpecification().queryParam(key, value);
+//    }
 
 }
