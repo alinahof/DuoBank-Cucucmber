@@ -14,7 +14,7 @@ Feature: GET /user API endpoint features
     And the response "Content-Type" header should be "application/json"
     And the response time should be less than 1000 ms
     And the response body should have "id" field with value "12"
-    And the response body should have "first_name" field with value "BidenJoe"
+    And the response body should have "first_name" field with value "Mary"
     And the response body should have "last_name" field with value "Clinton"
     And the response body should have "email" field with value "Clinton@mail.com"
     And the response body should have "created_at" field with value "2023-04-18 18:31:09"
@@ -41,7 +41,7 @@ Feature: GET /user API endpoint features
 
     Examples:
       | id | email                   | first_name | last_name  | modified_at         | created_at           |
-      | 12 | Clinton@mail.com        | BidenJoe   | Clinton    | 2023-04-30 20:06:21 | 2023-04-18 18:31:09 |
+      | 12 | Clinton@mail.com        | Mary   | Clinton    | 2023-08-21 16:16:09 | 2023-04-18 18:31:09 |
       | 13 | russell.terry@gmail.com | Ethan      | Cartwright |                     | 2023-04-18 18:34:18 |
 
 
