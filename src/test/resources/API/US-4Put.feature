@@ -1,5 +1,6 @@
 @API
 @api_only
+
 Feature: PUT /user API endpoint features
 
   Scenario: The API should require an authentication via API key
@@ -20,7 +21,7 @@ Feature: PUT /user API endpoint features
     When I send a "PUT" request to endpoint "/user"
     Then the response log should be displayed
     Then the response status code should be 400
-    Then the response body should have "message" field with value "Bad request. User id is not provided."
+    Then the response body should have "message" field with value "Invalid or missing ID"
     Examples:
     |id|
     |  |
