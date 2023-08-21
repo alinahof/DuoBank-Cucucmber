@@ -33,8 +33,5 @@ public class SharedData {
     private RequestSpecification requestSpecification = given();
     private Response response;
 
-    public Response getResponse() {
-        return response;
-    }
 }
 

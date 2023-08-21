@@ -34,10 +34,10 @@ jobs:
         with:
           edge-version: 'stable'
 
-      - name: Setup Firefox Browser
-        uses: browser-actions/setup-firefox@v1
-        with:
-          firefox-version: '116.0.2'
+#      - name: Setup Firefox Browser
+#        uses: browser-actions/setup-firefox@v1
+#        with:
+#          firefox-version: '116.0.2'
 
       - name: Run Smoke Tests in headless Chrome
         if: always()
