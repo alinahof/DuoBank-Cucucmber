@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.ui;
 
 import Pages.PreaaprovalInquiryPage;
 import io.cucumber.java.en.Then;

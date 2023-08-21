@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.ui;
 
 import Pages.PersonalPage;
 import com.github.javafaker.Faker;

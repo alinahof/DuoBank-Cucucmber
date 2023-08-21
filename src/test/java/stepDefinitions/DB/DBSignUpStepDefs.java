@@ -1,16 +1,17 @@
-package stepDefinitions;
+package stepDefinitions.DB;
 
 import Pages.SignUpPage;
-import com.beust.ah.A;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Assert;
+import stepDefinitions.SharedData;
 import utils.DBUtils;
+
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class DBSignUpStepDefs extends SignUpPage {
 

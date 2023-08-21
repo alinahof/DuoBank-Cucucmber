@@ -1,8 +1,13 @@
 package stepDefinitions;
 
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import lombok.Data;
 
 import java.util.List;
+
+import static io.restassured.RestAssured.given;
 
 @Data
 public class SharedData {
@@ -24,4 +29,12 @@ public class SharedData {
     private String passwordEE;
     private List<String> income_source;
     private List<String> column;
+
+    private RequestSpecification requestSpecification = given();
+    private Response response;
+
+    public Response getResponse() {
+        return response;
+    }
 }
+
