@@ -2,9 +2,10 @@ name:  branch  regression tests
 run-name: Running nightly regression tests
 
 on:
+
   schedule:
-    cron: '0 0 * * 1-5'  # minute,hour,day of month,month,day of week
-    # runs test at midnight everyday Mon-Fri
+     - cron: '0 0 * * 1-5'
+
 jobs:
   branch-test:
     runs-on: ubuntu-latest
