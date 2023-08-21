@@ -17,10 +17,8 @@ public class PreapprovalStepDefs {
     @When("I click on the mortgage application")
     public void i_click_on_the_mortgage_application() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        WebElement mortgageAppLink = Driver.getDriver().findElement(By.xpath("//span[.='Mortgage Application']"));
         Thread.sleep(2000);
-
-        WebElement mortgageAppLink = Driver.getDriver().findElement(By.xpath("//span[@class='menu-item'][.='Mortgage Application']"));
-
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(mortgageAppLink).click().perform();
 
