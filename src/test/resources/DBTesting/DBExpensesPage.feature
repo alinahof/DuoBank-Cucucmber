@@ -1,3 +1,4 @@
+
 Feature: Expenses Page data
 
   Background: Login to reach Expenses Page
@@ -5,7 +6,7 @@ Feature: Expenses Page data
     Then I navigate to Expenses Page
 
 
-  @exp
+  @exp @smoke
   Scenario: Update Expenses Information
     Given I am on the Expenses page
     When I update my living situation to rental

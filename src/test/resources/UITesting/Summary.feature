@@ -43,6 +43,6 @@ Feature: Summary page review & edit
     Given I click on the eConsent
     Then I save loan application
 
-
+  @smoke
   Scenario: Complete Application Loan Process
       Given I save loan application
