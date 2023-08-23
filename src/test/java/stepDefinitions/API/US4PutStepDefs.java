@@ -35,4 +35,5 @@ public class US4PutStepDefs {
        User user =  sharedData.getResponse().as(User.class);
         System.out.println(user.getModified_at());
     }
+
 }
