@@ -1,6 +1,7 @@
 @API
 @api_only
 
+
 Feature: PUT /user API endpoint features
 
   Scenario: The API should require an authentication via API key
@@ -44,15 +45,10 @@ Feature: PUT /user API endpoint features
     Given the request is authenticated with a valid API key
     And the request "Content-type" header is set to "application/json"
     And the request "id" query parameter is set to "12"
-    And the request body is set to the following payload
-      """
-      {
-        "first_name": "Bill",
-        "last_name": "Clinton",
-        "email": "Clinton@mail.com"
-      }
-      """
-
+    And the request body is set to the following payload as map
+      | first_name | Bill                      |
+      | last_name  | Clinton                   |
+      | email     | Clinton@mail.com@mail.com |
     When I send a "PUT" request to endpoint "/user"
     Then the response log should be displayed
     And the response status code should be 200
@@ -66,44 +62,36 @@ Feature: PUT /user API endpoint features
     Given the request is authenticated with a valid API key
     And the request "Content-type" header is set to "application/json"
     And the request "id" query parameter is set to "12"
-    And the request body is set to the following payload
-      """
-      {
-        "lastName": "Clinton",
-        "email": "Clinton@mail.com",
-      }
-      """
-
+    And the request body is set to the following payload as map
+      | last_name  | Clinton                   |
+      | email     | Clinton@mail.com@mail.com |
     When I send a "PUT" request to endpoint "/user"
     Then the response log should be displayed
     Then the response status code should be 422
     Then the response body should have "message" field with value "Missing or Invalid Required Fields!"
 
 
-  @testtoday
+  @today
     Scenario: Retrieve modified_at field of the successfully updated user
       Given the request is authenticated with a valid API key
       And the request "Content-type" header is set to "application/json"
       And the request "id" query parameter is set to "12"
-      And the request body is set to the following payload
-      """
-      {
-        "first_name": "Mary",
-        "last_name": "Clinton",
-        "email": "Clinton@mail.com"
-      }
-      """
+      And the request body is set to the following payload as map
+        | first_name | Mary                      |
+        | last_name  | Clinton                   |
+        | email     | Clinton@mail.com@mail.com |
 
       When I send a "PUT" request to endpoint "/user"
-    And the response status code should be 200
-    Then the request is authenticated with a valid API key
-    And the request "Content-type" header is set to "application/json"
-    And the request "id" query parameter is set to "12"
+      And the response status code should be 200
+      Then the request is authenticated with a valid API key
+      And the request "Content-type" header is set to "application/json"
+      And the request "id" query parameter is set to "12"
       And I send a "GET" request to endpoint "/user"
       And the response log should be displayed
-    And the response body should have "modified_at" field with value "LocalDateTime.now()"
-    And the response "Content-Type" header should be "application/json"
-    And the response time should be less than 500 ms
+      And the response body should have "modified_at" field with value
+      |modified_at|
+      And the response "Content-Type" header should be "application/json"
+      And the response time should be less than 500 ms
 
 
 
