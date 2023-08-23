@@ -115,7 +115,7 @@
         | John      | Smith    | johnsmith@gmail.com | Johnjohn! |
         | John      | Smith    | johnsmith@gmail.com | John1234  |
 
-    @testtoday
+
     Scenario Outline: Create a new user negative scenario - short first and last name
 
       Given the request is authenticated with a valid API key

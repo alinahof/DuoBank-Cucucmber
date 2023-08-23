@@ -38,7 +38,7 @@ Feature: PUT /user API endpoint features
     Then the response status code should be 404
     Then the response body should have "message" field with value "User not found."
 
-  @today
+
   Scenario: User information is successfully updated in the database
 
     Given the request is authenticated with a valid API key
@@ -47,9 +47,9 @@ Feature: PUT /user API endpoint features
     And the request body is set to the following payload
       """
       {
-        "firstName": "Bill",
-        "lastName": "Clinton",
-        "email": "Clinton@mail.com",
+        "first_name": "Bill",
+        "last_name": "Clinton",
+        "email": "Clinton@mail.com"
       }
       """
 
@@ -80,7 +80,7 @@ Feature: PUT /user API endpoint features
     Then the response body should have "message" field with value "Missing or Invalid Required Fields!"
 
 
-
+  @testtoday
     Scenario: Retrieve modified_at field of the successfully updated user
       Given the request is authenticated with a valid API key
       And the request "Content-type" header is set to "application/json"
@@ -88,9 +88,9 @@ Feature: PUT /user API endpoint features
       And the request body is set to the following payload
       """
       {
-        "firstName": "Mary",
-        "lastName": "Clinton",
-        "email": "Clinton@mail.com",
+        "first_name": "Mary",
+        "last_name": "Clinton",
+        "email": "Clinton@mail.com"
       }
       """
 
@@ -101,7 +101,9 @@ Feature: PUT /user API endpoint features
     And the request "id" query parameter is set to "12"
       And I send a "GET" request to endpoint "/user"
       And the response log should be displayed
-    And the response body should have "modified_at" field with value "2023-08-21 14:43:20"
+    And the response body should have "modified_at" field with value "LocalDateTime.now()"
+    And the response "Content-Type" header should be "application/json"
+    And the response time should be less than 500 ms
 
 
 
