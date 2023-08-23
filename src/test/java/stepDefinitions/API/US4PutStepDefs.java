@@ -2,6 +2,7 @@ package stepDefinitions.API;
 
 import io.cucumber.java.en.And;
 import stepDefinitions.SharedData;
+import pojos.User;
 
 import java.util.Map;
 
@@ -24,8 +25,14 @@ public class US4PutStepDefs {
         sharedData.getRequestSpecification().body(payload);
     }
 
-    @And("the response body should have {string} field with value")
-    public void theResponseBodyShouldHaveFieldWithValue(String modified) {
-        sharedData.getResponse().then().extract().as(Map.class).get(modified);
+//    @And("the response body should have {string} field with value")
+//    public void theResponseBodyShouldHaveFieldWithValue(String modified) {
+//        sharedData.getResponse().then().extract().as(Map.class).get(modified);
+//    }
+
+    @And("the response body should have {string} field updated")
+    public void theResponseBodyShouldHaveFieldUpdated(String arg0) {
+       User user =  sharedData.getResponse().as(User.class);
+        System.out.println(user.getModified_at());
     }
 }

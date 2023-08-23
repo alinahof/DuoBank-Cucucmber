@@ -4,8 +4,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pojos.User;
 import stepDefinitions.SharedData;
 import utils.ConfigReader;
+
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -89,5 +92,17 @@ public class US3PostStepDefs {
             default -> throw new IllegalArgumentException(method + ": This request method is invalid.");
         }
 
+    }
+
+    @And("the request body is set to the following payload as pojo")
+    public void theRequestBodyIsSetToTheFollowingPayloadAsPojo(Map<String, String> map) {
+
+        sharedData.getRequestSpecification().body(
+                User.builder().
+                        email(map.get("email")).
+                        password(map.get("password")).
+                        first_name(map.get("first_name")).
+                        last_name(map.get("last_name")).build()
+        );
     }
 }

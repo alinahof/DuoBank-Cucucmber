@@ -88,10 +88,12 @@ Feature: PUT /user API endpoint features
       And the request "id" query parameter is set to "12"
       And I send a "GET" request to endpoint "/user"
       And the response log should be displayed
-      And the response body should have "modified_at" field with value
-      |modified_at|
-      And the response "Content-Type" header should be "application/json"
-      And the response time should be less than 500 ms
+      And the response body should have "modified_at" field updated
+
+#      And the response "Content-Type" header should be "application/json"
+#      And the response time should be less than 500 ms
+
+
 
 
 

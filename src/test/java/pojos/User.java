@@ -15,11 +15,14 @@ import lombok.NoArgsConstructor;
 public class User {
     private String username;
     private String id;
-    private String firstName;
-    private String lastName;
+    private String first_name;
+    private String last_name;
     private String email;
     private String password;
-    private String createdAt;
-    private String signUpDate;
+    private String created_at;
+    private String modified_at;
+
+    private String type;
+    private String active;
 
 }
