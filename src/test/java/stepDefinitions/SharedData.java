@@ -32,6 +32,8 @@ public class SharedData {
 
     private RequestSpecification requestSpecification = given();
     private Response response;
+    private String JwtToken;
+
 
 }
 

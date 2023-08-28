@@ -58,7 +58,7 @@ public class RestAssuredAuthentication {
             RestAssured.baseURI = ConfigReader.getProperty("api.base.uri");
 
             given().
-                    queryParam("api_key", "c8a912d7d1c5a5a99c508f865b5eaae14a5b484f5bfe2d8f48c40e46289b47f3").
+                    queryParam("api_key", ConfigReader.getProperty("api.key.duobank")).
                     header("Accept", "application/vnd.github+json").
 
                     when().log().all().
@@ -79,7 +79,7 @@ public class RestAssuredAuthentication {
 
             // Obtain the jwt token through /login endpoint
             String access_token = given()
-                    .queryParam("api_key", "c8a912d7d1c5a5a99c508f865b5eaae14a5b484f5bfe2d8f48c40e46289b47f3")
+                    .queryParam("api_key", ConfigReader.getProperty("api.key.duobank"))
                     .header("Accept", "application/json")
                     .header("Content-type", "application/json")
                     .body("""
@@ -98,7 +98,7 @@ public class RestAssuredAuthentication {
 
             List<String> user;
             user = given().
-                    queryParam("api_key", "c8a912d7d1c5a5a99c508f865b5eaae14a5b484f5bfe2d8f48c40e46289b47f3").
+                    queryParam("api_key", ConfigReader.getProperty("api.key.duobank")).
                     header("Accept", "application/json").
                     header("Authorization", access_token).
 
@@ -106,7 +106,7 @@ public class RestAssuredAuthentication {
                     get("mortgage id").
                     then().log().all().statusCode(200).extract().path("mortgage.id");
 
-            System.out.println(user);
+
             //
             //
 
