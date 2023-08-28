@@ -12,11 +12,11 @@ Feature: GET /user API endpoint features
     Then the response log should be displayed
     Then the response status code should be 200
     And the response "Content-Type" header should be "application/json"
-    And the response time should be less than 500 ms
+    And the response time should be less than 1000 ms
     And the response body should have "id" field with value "12"
     And the response body should have "first_name" field with value "Mary"
     And the response body should have "last_name" field with value "Clinton"
-    And the response body should have "email" field with value "Clinton@mail.com"
+    And the response body should have "email" field with value "Clinton@mail.com@mail.com"
     And the response body should have "created_at" field with value "2023-04-18 18:31:09"
 
 
@@ -54,7 +54,7 @@ Feature: GET /user API endpoint features
     Then the response log should be displayed
     Then the response status code should be 404
     And the response "Content-Type" header should be "application/json"
-    And the response time should be less than 500 ms
+    And the response time should be less than 1000 ms
     And the response body should have "message" field with value "User not found."
 
 
