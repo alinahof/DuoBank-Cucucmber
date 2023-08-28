@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import org.hamcrest.Matchers;
@@ -105,7 +106,12 @@ public class US7LoginStepDefs {
     }
 
     @When("the user makes a {string} request to {string} without an API key")
-    public void theUserMakesARequestToWithoutAnAPIKey(String arg0, String arg1) {
+    public void theUserMakesARequestToWithoutAnAPIKey(String method, String resource) {
+         given()
+                .when()
+                .request(method, resource);
+
+        System.out.println(sharedData.getResponse().getBody().asString());
     }
 
     @And("the response body should contain {string} message: {string}")
