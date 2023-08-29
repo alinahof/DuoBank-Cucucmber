@@ -98,5 +98,16 @@ public class APIUS1StepDefs {
         sharedData.getRequestSpecification().
                 queryParam("api_key", "invalidKey");
     }
+
+    @Given("the request {string} header is set to a valid JWT token")
+    public void the_request_header_is_set_to_a_valid_jwt_token(String headerName) {
+        String jwtToken = sharedData.getJWTToken();
+        System.out.println("JWT Token: " + jwtToken);  // Print the token for debugging
+
+        sharedData.getRequestSpecification()
+                .header(headerName, "Bearer " + jwtToken);
+    }
+//    private String generateJWTToken() {
+//    }
 }
 

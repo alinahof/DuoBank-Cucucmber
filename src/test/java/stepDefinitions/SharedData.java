@@ -32,9 +32,15 @@ public class SharedData {
 
     private RequestSpecification requestSpecification = given();
     private Response response;
-    private String JwtToken;
+
     private String JWTToken;
 
+    public String getJWTToken() {
+        return JWTToken;
+    }
 
+    public void setJWTToken(String JWTToken) {
+        this.JWTToken = JWTToken;
+    }
 }
 

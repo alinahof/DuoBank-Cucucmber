@@ -39,7 +39,7 @@ public class APIUS9Utils {
             .header("Content-type", "application/json")
             .body("""
             {
-              "username": "123123example",
+              "id": "1198",
               "email": "123123123@mail.com",
               "password": "One23!example"
             }
@@ -50,9 +50,10 @@ public class APIUS9Utils {
             .extract().path("access_token");
     SharedData sharedData = new SharedData();
 
-    sharedData.setJwtToken(access_token);
+    sharedData.setJWTToken(access_token);
+        System.out.println(access_token);
 
-    String jwtToken = sharedData.getJwtToken();
+    String jwtToken = sharedData.getJWTToken();
 
     List<String> mortgageIds = given()
             .queryParam("api_key", ConfigReader.getProperty("api.key.duobank"))
