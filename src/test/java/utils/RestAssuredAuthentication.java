@@ -1,6 +1,8 @@
 package utils;
 
 import io.restassured.RestAssured;
+import io.restassured.path.xml.XmlPath;
+import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import stepDefinitions.SharedData;
@@ -10,9 +12,9 @@ import java.util.List;
 import static io.restassured.RestAssured.*;
 
 public class RestAssuredAuthentication {
-
-
-
+//    SharedData sharedData;
+//
+//
 //    public RestAssuredAuthentication(SharedData sharedData) {
 //        this.sharedData = sharedData;
 //    }
@@ -53,40 +55,39 @@ public class RestAssuredAuthentication {
 
         @Test
         public void bearerToken() {
+            SharedData sharedData = new SharedData();
 
+            RestAssured.baseURI = "https://api.github.com";
 
-            RestAssured.baseURI = ConfigReader.getProperty("api.base.uri");
-
-            given().
-                    queryParam("api_key", ConfigReader.getProperty("api.key.duobank")).
-                    header("Accept", "application/vnd.github+json").
-
-                    when().log().all().
-                    get("/applications").
-
-                    then().log().all().
-                    assertThat().
-                    statusCode((200));
-
+            given()
+                    .queryParam("api_key", ConfigReader.getProperty("api.key.duobank"))
+                    .header("Authorization", "Bearer " + sharedData.getJWTToken())
+                    .header("Accept", "application/json")
+                    .when().log().all()
+                    .get("/applications")
+                    .then().log().all()
+                    .assertThat()
+                    .statusCode(200);
         }
 
 
 
         @Test
         public void JWTToken() {
+            SharedData sharedData = new SharedData();
 
             baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
 
-            // Obtain the jwt token through /login endpoint
+
             String access_token = given()
                     .queryParam("api_key", ConfigReader.getProperty("api.key.duobank"))
                     .header("Accept", "application/json")
                     .header("Content-type", "application/json")
                     .body("""
         {
-          "username": "123123example",
-           "email": "123123123@mail.com",
-          "password": "One23!example"
+          "username": "coolguy",
+           "email": "coolguy@mail.com",
+          "password": "coolGuy123!"
         }
     """)
                     .when().log().all()
@@ -94,29 +95,27 @@ public class RestAssuredAuthentication {
                     .then().log().all().statusCode(200)
                     .extract().path("access_token");
 
+            sharedData.setJWTToken(access_token);
 
+            String jwtToken = sharedData.getJWTToken();
 
-            List<String> user;
-            user = given().
-                    queryParam("api_key", ConfigReader.getProperty("api.key.duobank")).
-                    header("Accept", "application/json").
-                    header("Authorization", access_token).
+            Response response = given()
+                    .queryParam("api_key", ConfigReader.getProperty("api.key.duobank"))
+                    .header("Accept", "application/json")
+                    .header("Authorization",  jwtToken)
+                    .when().log().all()
+                    .get("/applications")
+                    .then().log().all().statusCode(200)
+                    .extract().response();
 
-                    when().log().all().
-                    get("mortgage id").
-                    then().log().all().statusCode(200).extract().path("mortgage.id");
+            String applicationInfo = response.path("applications.application");
 
-
-            //
-            //
-
-
+            System.out.println(applicationInfo);
         }
 
 
         @Test
         public void Oauth2() {
-
 
             // Obtain the code
             //obtain the access token from the authorization server

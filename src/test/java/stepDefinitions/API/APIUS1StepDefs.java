@@ -1,14 +1,16 @@
 package stepDefinitions.API;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import stepDefinitions.SharedData;
-import utils.APIUS9Utils;
 import utils.ConfigReader;
+import org.json.simple.JSONObject;
+
 import java.util.List;
+
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 public class APIUS1StepDefs {
@@ -19,13 +21,6 @@ public class APIUS1StepDefs {
 
     }
 
-
-    @Given("the request is authenticated with a valid API key")
-    public void the_request_is_authenticated_with_a_valid_api_key() {
-        sharedData.getRequestSpecification().
-                queryParam("api_key", ConfigReader.getProperty("api.key.duobank"));
-
-    }
 
     @Given("the request {string} header is set to {string}")
     public void the_header_is_set_to(String key, String value) {
@@ -98,5 +93,56 @@ public class APIUS1StepDefs {
         sharedData.getRequestSpecification().
                 queryParam("api_key", "invalidKey");
     }
-}
+
+    @Given("the request is authenticated with a valid API key")
+    public void the_request_is_authenticated_with_a_valid_api_key() {
+        sharedData.getRequestSpecification().
+                queryParam("api_key", ConfigReader.getProperty("api.key.duobank"));
+
+    }
+
+    @Given("the JWT token is generated and stored")
+    public void the_JWT_token_is_generated_and_stored() {
+        RestAssured.baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
+
+
+        JSONObject jsonBody = new JSONObject();
+        jsonBody.put("username", "coolguy");
+        jsonBody.put("email", "coolguy@mail.com");
+        jsonBody.put("password", "coolGuy123!");
+
+        // Send the login request and extract the access token
+        String access_token = given()
+                .queryParam("api_key", ConfigReader.getProperty("api.key.duobank"))
+                .header("Accept", "application/json")
+                .header("Content-type", "application/json")
+                .body(jsonBody.toString())
+                .when().log().all()
+                .post("/login")
+                .then().log().all().statusCode(200)
+                .extract().path("access_token");
+
+        // Store the access token in the shared data instance
+        sharedData.setJWTToken(access_token);
+    }
+
+        @Given("the request Authorization header is set to a valid JWT token")
+        public void the_request_header_is_set_to_a_valid_jwt_token (){
+            // JWT token should have been generated and stored previously in shared data
+            sharedData.getRequestSpecification()
+                    .header("Authorization", "Bearer " + sharedData.getJWTToken());
+        }
+
+        @Given("the request \"Content-type\" header is set to \"application/json\"")
+        public void the_request_Content_type_header_is_set_to_application_json () {
+            sharedData.getRequestSpecification()
+                    .header("Content-type", "application/json");
+        }
+
+        @Then("the response \"Content-Type\" header should be \"application/json; charset=UTF-8\"")
+        public void the_response_Content_Type_header_should_be_application_json_charset_UTF_8 () {
+            sharedData.getResponse().then().header("Content-Type", "application/json; charset=UTF-8");
+        }
+    }
+
 
