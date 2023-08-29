@@ -70,15 +70,6 @@
 
       Given the request is authenticated with a valid API key
       And the request "Content-type" header is set to "application/json"
-#      And the request body is set to the following payload
-#      """
-#      {
-#        "first_name": "Johnkhkhbhk",
-#        "last_name": "Smithjjj",
-#        "email": "johhnjkkkhjkhknsmith@gmail.com",
-#        "password": "John123!"
-#      }
-#      """
       And the request body is set to the following payload as pojo
         | first_name | Johnkhkhbhk                         |
         | last_name  | Smithjjj                         |

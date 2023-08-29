@@ -71,7 +71,7 @@ Feature: PUT /user API endpoint features
     Then the response body should have "message" field with value "Missing or Invalid Required Fields!"
 
 
-  @today
+
     Scenario: Retrieve modified_at field of the successfully updated user
       Given the request is authenticated with a valid API key
       And the request "Content-type" header is set to "application/json"
