@@ -15,7 +15,8 @@ public class PostLoginStepDefs {
     @Then("the response access token is stored")
     public void the_response_access_token_is_stored() {
         String token = sharedData.getResponse().path("access_token");
-        sharedData.setJwtToken(token);
+        sharedData.setJWTToken(token);
+
     }
 
 }
