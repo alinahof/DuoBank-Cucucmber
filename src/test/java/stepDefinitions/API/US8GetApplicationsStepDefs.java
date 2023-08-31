@@ -17,7 +17,7 @@ public class US8GetApplicationsStepDefs {
 
     @And("the JWT token is set in the header")
     public void theJWTTokenIsSetInTheHeader() {
-        sharedData.getRequestSpecification().header("Authorization", sharedData.getJwtToken());
+        sharedData.getRequestSpecification().header("Authorization", sharedData.getJWTToken());
     }
 
     @And("the response should contain a list of all applicants with the following fields")
