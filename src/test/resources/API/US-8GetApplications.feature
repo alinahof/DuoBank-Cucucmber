@@ -36,7 +36,7 @@ Feature: GET /applications API endpoint features
     Then the response log should be displayed
     Then the response status code should be 200
 
-  @today
+
 Scenario: Retrieve applications information
   Given the request is authenticated with a valid API key
   And the request "Content-type" header is set to "application/json"
@@ -51,5 +51,15 @@ Scenario: Retrieve applications information
     | b_lastName        |
     | b_middleName      |
     | total_loan_amount |
+
+  @today @DB
+    Scenario: List of applications must be ordered by creation date
+      Given the request is authenticated with a valid API key
+      And the request "Content-type" header is set to "application/json"
+      And the JWT token is set in the header
+      When I send a "GET" request to endpoint "/applications"
+      Then the response log should be displayed
+      And the response "Content-Type" header should be "application/json; charset=UTF-8"
+      And the response should contain a list of all applications' "id"
 
 
