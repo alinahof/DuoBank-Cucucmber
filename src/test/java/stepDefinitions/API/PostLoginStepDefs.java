@@ -16,6 +16,7 @@ public class PostLoginStepDefs {
     public void the_response_access_token_is_stored() {
         String token = sharedData.getResponse().path("access_token");
         sharedData.setJWTToken(token);
+
     }
 
 }
