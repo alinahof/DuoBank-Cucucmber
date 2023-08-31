@@ -42,5 +42,7 @@ public class SharedData {
     public void setJWTToken(String JWTToken) {
         this.JWTToken = JWTToken;
     }
+
+    private List<Object> idList;
 }
 
